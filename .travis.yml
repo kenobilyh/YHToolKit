@@ -1,0 +1,12 @@
+branches:
+  only:
+    - master
+language: objective-c
+os: osx
+osx_image: xcode7.3
+xcode_workspace: YHToolKit.xcworkspace
+xcode_scheme: YHToolKit
+xcode_sdk: iphonesimulator9.3
+xctool_args: -destination "platform=iOS Simulator 9.0, name=iPhone 6"
+after_success:
+  bash <(curl -s https://codecov.io/bash)
