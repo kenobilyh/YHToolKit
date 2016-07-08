@@ -15,6 +15,7 @@
 		0018B7751CF965BE00DB71CD /* YHToolKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0018B7741CF965BE00DB71CD /* YHToolKitTests.swift */; };
 		0018B7801CF965BE00DB71CD /* YHToolKitUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0018B77F1CF965BE00DB71CD /* YHToolKitUITests.swift */; };
 		0018B7901CF9792200DB71CD /* NSFileManager+Path.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0018B78F1CF9792200DB71CD /* NSFileManager+Path.swift */; };
+		0070A6321D2FDCAB00865EF3 /* UIVIew+AniMarco.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0070A6311D2FDCAB00865EF3 /* UIVIew+AniMarco.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		0018B77F1CF965BE00DB71CD /* YHToolKitUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YHToolKitUITests.swift; sourceTree = "<group>"; };
 		0018B7811CF965BE00DB71CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0018B78F1CF9792200DB71CD /* NSFileManager+Path.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSFileManager+Path.swift"; sourceTree = "<group>"; };
+		0070A6311D2FDCAB00865EF3 /* UIVIew+AniMarco.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIVIew+AniMarco.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 		0018B75E1CF965BE00DB71CD /* YHToolKit */ = {
 			isa = PBXGroup;
 			children = (
+				0070A6301D2FDC9300865EF3 /* YHAniExtension */,
 				0018B78D1CF978B000DB71CD /* YHFileExtension */,
 				0018B78E1CF978B000DB71CD /* YHUIExtension */,
 				0018B75F1CF965BE00DB71CD /* AppDelegate.swift */,
@@ -142,6 +145,14 @@
 			children = (
 			);
 			path = YHUIExtension;
+			sourceTree = "<group>";
+		};
+		0070A6301D2FDC9300865EF3 /* YHAniExtension */ = {
+			isa = PBXGroup;
+			children = (
+				0070A6311D2FDCAB00865EF3 /* UIVIew+AniMarco.swift */,
+			);
+			path = YHAniExtension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -280,6 +291,7 @@
 			files = (
 				0018B7901CF9792200DB71CD /* NSFileManager+Path.swift in Sources */,
 				0018B7621CF965BE00DB71CD /* ViewController.swift in Sources */,
+				0070A6321D2FDCAB00865EF3 /* UIVIew+AniMarco.swift in Sources */,
 				0018B7601CF965BE00DB71CD /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
