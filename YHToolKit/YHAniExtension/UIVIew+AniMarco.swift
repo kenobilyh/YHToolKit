@@ -15,7 +15,7 @@ extension UIView {
         
         UIView.animate(withDuration: duration, delay: 0, options: options, animations: {
             self.transform = CGAffineTransform.init(scaleX: scaleFactor, y: scaleFactor)
-            self.frame.origin = CGPoint.init(x: -rectTofocus.minX * scaleFactor + (toRect.width - rectTofocus.width * scaleFactor) / 2.0, y: -rectTofocus.minY * scaleFactor + (toRect.height - rectTofocus.height * scaleFactor) / 2.0)
+            self.frame.origin = CGPoint.init(x: toRect.minX - rectTofocus.minX * scaleFactor + (toRect.width - rectTofocus.width * scaleFactor) / 2.0, y: toRect.minY - rectTofocus.minY * scaleFactor + (toRect.height - rectTofocus.height * scaleFactor) / 2.0)
             }, completion:completion)
     }
 }
