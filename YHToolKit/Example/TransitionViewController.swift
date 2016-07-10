@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class TransitionViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class TransitionViewController: UIViewController {
     var collectionView: UICollectionView?
     
     override func viewDidLoad() {
@@ -19,9 +19,8 @@ class TransitionViewController: UIViewController, UICollectionViewDelegate, UICo
         let collectionViewFlowLayout = UICollectionViewFlowLayout.init()
         collectionView = UICollectionView.init(frame: self.view.bounds, collectionViewLayout: collectionViewFlowLayout)
         collectionView?.backgroundColor = UIColor.clear()
-//        collectionView?.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         collectionView?.translatesAutoresizingMaskIntoConstraints = false
-        collectionView?.register(UICollectionViewCell.classForCoder(), forCellWithReuseIdentifier: "CellIdentifier")
+        collectionView?.register(ImageCollectionViewCell.classForCoder(), forCellWithReuseIdentifier: NSStringFromClass(ImageCollectionViewCell.classForCoder()))
         collectionView?.delegate = self
         collectionView?.dataSource = self
         
@@ -33,28 +32,41 @@ class TransitionViewController: UIViewController, UICollectionViewDelegate, UICo
         self.view.addConstraint(NSLayoutConstraint.init(item: collectionView!, attribute: NSLayoutAttribute.right, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.right, multiplier: 1.0, constant: 0.0))
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if !(self.collectionView?.transform.isIdentity)! {
+            UIView.animate(withDuration: 1, animations: { 
+                self.collectionView?.transform = CGAffineTransform.identity
+                self.view.setNeedsLayout()
+                self.view.layoutIfNeeded()
+            })
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
 }
     
-// MARK : UICollectionViewDataSource
-extension TransitionViewController {
+// MARK: UICollectionViewDataSource
+extension TransitionViewController : UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 30
     }
     
     
     @objc(collectionView:cellForItemAtIndexPath:) func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView .dequeueReusableCell(withReuseIdentifier: "CellIdentifier", for: indexPath)
+        let cell:ImageCollectionViewCell = collectionView .dequeueReusableCell(withReuseIdentifier: NSStringFromClass(ImageCollectionViewCell.classForCoder()), for: indexPath) as! ImageCollectionViewCell
         cell.backgroundColor = UIColor.init(red: CGFloat(indexPath.row) / 30.0, green: CGFloat(indexPath.row) / 50.0, blue: CGFloat(indexPath.row) / 70.0, alpha: 1.0)
+        cell.imageView.image = UIImage.init(named: "sunsetSquare")
         return cell
     }
 }
 
-// MARK : UICollectionViewDelegate
-extension TransitionViewController {
+// MARK: UICollectionViewDelegate
+extension TransitionViewController: UICollectionViewDelegate {
     @objc(collectionView:didSelectItemAtIndexPath:) func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if !collectionView.transform.isIdentity {
             UIView.animate(withDuration: 1, animations: { 
@@ -64,9 +76,23 @@ extension TransitionViewController {
             })
         } else {
             let cell = collectionView.cellForItem(at: indexPath)!
-            collectionView.focusRect(cell.frame.offsetBy(dx: -collectionView.contentOffset.x, dy: -collectionView.contentOffset.y), toRect: self.view.frame, duration: 1, options: [])
+            collectionView.focusRect(cell.frame.offsetBy(dx: -collectionView.contentOffset.x, dy: -collectionView.contentOffset.y), toRect: self.view.frame, duration: 1, options: [], completion: { (complete) in
+                let imagePage = ImageDisplayViewController.init()
+                self.navigationController?.delegate = self
+                self.navigationController?.pushViewController(imagePage, animated: true)
+            })
+            
         }
     }
 }
 
 // MARK : UICollectionViewDelegateFlowLayout
+
+// MARK : UINavigationControllerDelegate
+extension TransitionViewController: UINavigationControllerDelegate {
+    func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationControllerOperation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        let animator = YHFocusAnimator.init()
+        animator.operation = operation
+        return animator
+    }
+}

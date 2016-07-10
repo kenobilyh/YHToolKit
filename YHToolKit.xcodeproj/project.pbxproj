@@ -16,8 +16,10 @@
 		0018B7801CF965BE00DB71CD /* YHToolKitUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0018B77F1CF965BE00DB71CD /* YHToolKitUITests.swift */; };
 		0018B7901CF9792200DB71CD /* NSFileManager+Path.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0018B78F1CF9792200DB71CD /* NSFileManager+Path.swift */; };
 		0070A6321D2FDCAB00865EF3 /* UIVIew+AniMarco.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0070A6311D2FDCAB00865EF3 /* UIVIew+AniMarco.swift */; };
+		0084B5E51D32371A00E80315 /* YHFocusAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0084B5E41D32371A00E80315 /* YHFocusAnimator.swift */; };
 		00A4CEBE1D30C9180010B4B1 /* TransitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A4CEBD1D30C9180010B4B1 /* TransitionViewController.swift */; };
 		00A4CEC01D30E78A0010B4B1 /* ImageDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A4CEBF1D30E78A0010B4B1 /* ImageDisplayViewController.swift */; };
+		00A4CECA1D3209F20010B4B1 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A4CEC91D3209F20010B4B1 /* ImageCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,8 +55,10 @@
 		0018B7811CF965BE00DB71CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0018B78F1CF9792200DB71CD /* NSFileManager+Path.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSFileManager+Path.swift"; sourceTree = "<group>"; };
 		0070A6311D2FDCAB00865EF3 /* UIVIew+AniMarco.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIVIew+AniMarco.swift"; sourceTree = "<group>"; };
+		0084B5E41D32371A00E80315 /* YHFocusAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YHFocusAnimator.swift; sourceTree = "<group>"; };
 		00A4CEBD1D30C9180010B4B1 /* TransitionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionViewController.swift; sourceTree = "<group>"; };
 		00A4CEBF1D30E78A0010B4B1 /* ImageDisplayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDisplayViewController.swift; sourceTree = "<group>"; };
+		00A4CEC91D3209F20010B4B1 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +152,7 @@
 		0018B78E1CF978B000DB71CD /* YHUIExtension */ = {
 			isa = PBXGroup;
 			children = (
+				0084B5E41D32371A00E80315 /* YHFocusAnimator.swift */,
 			);
 			path = YHUIExtension;
 			sourceTree = "<group>";
@@ -165,6 +170,7 @@
 			children = (
 				00A4CEBD1D30C9180010B4B1 /* TransitionViewController.swift */,
 				00A4CEBF1D30E78A0010B4B1 /* ImageDisplayViewController.swift */,
+				00A4CEC91D3209F20010B4B1 /* ImageCollectionViewCell.swift */,
 			);
 			path = Example;
 			sourceTree = "<group>";
@@ -306,6 +312,8 @@
 				0018B7901CF9792200DB71CD /* NSFileManager+Path.swift in Sources */,
 				0018B7621CF965BE00DB71CD /* ViewController.swift in Sources */,
 				0070A6321D2FDCAB00865EF3 /* UIVIew+AniMarco.swift in Sources */,
+				00A4CECA1D3209F20010B4B1 /* ImageCollectionViewCell.swift in Sources */,
+				0084B5E51D32371A00E80315 /* YHFocusAnimator.swift in Sources */,
 				00A4CEC01D30E78A0010B4B1 /* ImageDisplayViewController.swift in Sources */,
 				00A4CEBE1D30C9180010B4B1 /* TransitionViewController.swift in Sources */,
 				0018B7601CF965BE00DB71CD /* AppDelegate.swift in Sources */,
