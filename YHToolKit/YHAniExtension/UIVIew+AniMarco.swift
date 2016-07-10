@@ -10,12 +10,12 @@ import Foundation
 import UIKit
 
 extension UIView {
-    func focusRect(_ rectTofocus: CGRect, toRect:CGRect, duration:TimeInterval, options: UIViewAnimationOptions, completion: ((Bool) -> Swift.Void)? = nil) {
-        let scaleFactor = min(toRect.width / rectTofocus.width, toRect.height / rectTofocus.height)
+    func focusRect(_ rectToFocus: CGRect, toRect:CGRect, duration:TimeInterval, options: UIViewAnimationOptions, completion: ((Bool) -> Swift.Void)? = nil) {
+        let scaleFactor = min(toRect.width / rectToFocus.width, toRect.height / rectToFocus.height)
         
         UIView.animate(withDuration: duration, delay: 0, options: options, animations: {
             self.transform = CGAffineTransform.init(scaleX: scaleFactor, y: scaleFactor)
-            self.frame.origin = CGPoint.init(x: toRect.minX - rectTofocus.minX * scaleFactor + (toRect.width - rectTofocus.width * scaleFactor) / 2.0, y: toRect.minY - rectTofocus.minY * scaleFactor + (toRect.height - rectTofocus.height * scaleFactor) / 2.0)
+            self.frame.origin = CGPoint.init(x: toRect.minX - rectToFocus.minX * scaleFactor + (toRect.width - rectToFocus.width * scaleFactor) / 2.0, y: toRect.minY - rectToFocus.minY * scaleFactor + (toRect.height - rectToFocus.height * scaleFactor) / 2.0)
             }, completion:completion)
     }
 }
