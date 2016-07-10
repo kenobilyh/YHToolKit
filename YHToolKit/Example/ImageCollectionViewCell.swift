@@ -23,6 +23,7 @@ class ImageCollectionViewCell: UICollectionViewCell {
     
     func setupComponents() -> Void {
         self.imageView = UIImageView.init(frame: CGRect.zero)
+        self.imageView.contentMode = .scaleAspectFit
         self.imageView.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(self.imageView)
         

@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 class ImageDisplayViewController: UIViewController {
+    var displayImage: UIImage?
     var mainImageView: UIImageView!
     var titleLabel: UILabel!
     var describeLabel: UILabel!
@@ -22,7 +23,8 @@ class ImageDisplayViewController: UIViewController {
     
     func setupView() -> Void {
         self.mainImageView = UIImageView.init(frame: CGRect.zero)
-        self.mainImageView.image = UIImage.init(named: "sunsetSquare")
+        self.mainImageView.image = self.displayImage
+        self.mainImageView.contentMode = .scaleAspectFit
         self.view.addSubview(self.mainImageView)
         
         self.titleLabel = UILabel.init(frame: CGRect.zero)

@@ -48,8 +48,7 @@ extension TransitionViewController : UICollectionViewDataSource{
     
     @objc(collectionView:cellForItemAtIndexPath:) func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell:ImageCollectionViewCell = collectionView .dequeueReusableCell(withReuseIdentifier: NSStringFromClass(ImageCollectionViewCell.classForCoder()), for: indexPath) as! ImageCollectionViewCell
-        cell.backgroundColor = UIColor.init(red: CGFloat(indexPath.row) / 30.0, green: CGFloat(indexPath.row) / 50.0, blue: CGFloat(indexPath.row) / 70.0, alpha: 1.0)
-        cell.imageView.image = UIImage.init(named: "sunsetSquare")
+        cell.imageView.image = 0 == indexPath.row % 3 ? UIImage.init(named: "duck") : UIImage.init(named: "sunset")
         return cell
     }
 }
@@ -57,18 +56,25 @@ extension TransitionViewController : UICollectionViewDataSource{
 // MARK: UICollectionViewDelegate
 extension TransitionViewController: UICollectionViewDelegate {
     @objc(collectionView:didSelectItemAtIndexPath:) func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let cell = collectionView.cellForItem(at: indexPath)!
+        let cell = collectionView.cellForItem(at: indexPath) as! ImageCollectionViewCell
         if (self.animator == nil) {
             self.animator = YHFocusAnimator.init(sourceView: self.collectionView, toRect: self.view.frame, duration: 0.7)
         }
         self.animator?.rectToFocus = cell.frame.offsetBy(dx: -collectionView.contentOffset.x, dy: -collectionView.contentOffset.y)
         let imagePage = ImageDisplayViewController.init()
+        imagePage.displayImage = cell.imageView.image
         self.navigationController?.delegate = self
         self.navigationController?.pushViewController(imagePage, animated: true)
     }
 }
 
 // MARK : UICollectionViewDelegateFlowLayout
+
+extension TransitionViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize.init(width: 60, height: 60)
+    }
+}
 
 // MARK : UINavigationControllerDelegate
 extension TransitionViewController: UINavigationControllerDelegate {
