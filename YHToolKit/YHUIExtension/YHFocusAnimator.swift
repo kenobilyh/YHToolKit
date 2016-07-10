@@ -10,19 +10,39 @@ import UIKit
 
 class YHFocusAnimator: NSObject, UIViewControllerAnimatedTransitioning {
     var operation: UINavigationControllerOperation?
+    var duration: TimeInterval?
+    var rectToFocus: CGRect?
+    let sourceView: UIView!
+    let toRect: CGRect!
+    
+    init(sourceView: UIView!, toRect: CGRect!, duration: TimeInterval?) {
+        self.sourceView = sourceView
+        self.toRect = toRect
+        super.init()
+    }
     
     func transitionDuration(_ transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return 1
+        return self.duration > 0.0 ? self.duration! : 0.7
     }
     
     func animateTransition(_ transitionContext: UIViewControllerContextTransitioning) {
         let fromVC = transitionContext.viewController(forKey: UITransitionContextFromViewControllerKey)
         let toVC = transitionContext.viewController(forKey: UITransitionContextToViewControllerKey)
         if .push == self.operation {
-            transitionContext.containerView().addSubview(toVC!.view)
+            sourceView.focusRect(self.rectToFocus!, toRect: self.toRect, duration: self.transitionDuration(transitionContext), options: [], completion: { (complete) in
+                transitionContext.containerView().addSubview(toVC!.view)
+                transitionContext.completeTransition(!transitionContext.transitionWasCancelled())
+            })
         } else {
             transitionContext.containerView().addSubview(toVC!.view)
+            UIView.animate(withDuration: self.transitionDuration(transitionContext), animations: { 
+                self.sourceView?.transform = CGAffineTransform.identity
+                print(fromVC)
+                toVC?.view.setNeedsLayout()
+                toVC?.view.layoutIfNeeded()
+                }, completion: { (complete) in
+                    transitionContext.completeTransition(!transitionContext.transitionWasCancelled())
+                })
         }
-        transitionContext.completeTransition(!transitionContext.transitionWasCancelled())
     }
 }

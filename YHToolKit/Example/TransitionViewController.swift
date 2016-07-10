@@ -11,6 +11,7 @@ import UIKit
 
 class TransitionViewController: UIViewController {
     var collectionView: UICollectionView?
+    var animator: YHFocusAnimator?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,18 +31,6 @@ class TransitionViewController: UIViewController {
         self.view.addConstraint(NSLayoutConstraint.init(item: collectionView!, attribute: NSLayoutAttribute.left, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.left, multiplier: 1.0, constant: 0.0))
         self.view.addConstraint(NSLayoutConstraint.init(item: collectionView!, attribute: NSLayoutAttribute.bottom, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.bottom, multiplier: 1.0, constant: 0.0))
         self.view.addConstraint(NSLayoutConstraint.init(item: collectionView!, attribute: NSLayoutAttribute.right, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.right, multiplier: 1.0, constant: 0.0))
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        if !(self.collectionView?.transform.isIdentity)! {
-            UIView.animate(withDuration: 1, animations: { 
-                self.collectionView?.transform = CGAffineTransform.identity
-                self.view.setNeedsLayout()
-                self.view.layoutIfNeeded()
-            })
-        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -68,21 +57,14 @@ extension TransitionViewController : UICollectionViewDataSource{
 // MARK: UICollectionViewDelegate
 extension TransitionViewController: UICollectionViewDelegate {
     @objc(collectionView:didSelectItemAtIndexPath:) func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if !collectionView.transform.isIdentity {
-            UIView.animate(withDuration: 1, animations: { 
-                collectionView.transform = CGAffineTransform.identity
-                self.view.setNeedsLayout()
-                self.view.layoutIfNeeded()
-            })
-        } else {
-            let cell = collectionView.cellForItem(at: indexPath)!
-            collectionView.focusRect(cell.frame.offsetBy(dx: -collectionView.contentOffset.x, dy: -collectionView.contentOffset.y), toRect: self.view.frame, duration: 1, options: [], completion: { (complete) in
-                let imagePage = ImageDisplayViewController.init()
-                self.navigationController?.delegate = self
-                self.navigationController?.pushViewController(imagePage, animated: true)
-            })
-            
+        let cell = collectionView.cellForItem(at: indexPath)!
+        if (self.animator == nil) {
+            self.animator = YHFocusAnimator.init(sourceView: self.collectionView, toRect: self.view.frame, duration: 0.7)
         }
+        self.animator?.rectToFocus = cell.frame.offsetBy(dx: -collectionView.contentOffset.x, dy: -collectionView.contentOffset.y)
+        let imagePage = ImageDisplayViewController.init()
+        self.navigationController?.delegate = self
+        self.navigationController?.pushViewController(imagePage, animated: true)
     }
 }
 
@@ -91,8 +73,7 @@ extension TransitionViewController: UICollectionViewDelegate {
 // MARK : UINavigationControllerDelegate
 extension TransitionViewController: UINavigationControllerDelegate {
     func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationControllerOperation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        let animator = YHFocusAnimator.init()
-        animator.operation = operation
+        self.animator?.operation = operation
         return animator
     }
 }
