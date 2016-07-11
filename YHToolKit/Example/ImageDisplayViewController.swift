@@ -56,7 +56,6 @@ class ImageDisplayViewController: UIViewController {
 
 extension ImageDisplayViewController: UINavigationControllerDelegate {
     func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
-        print(viewController)
     }
 }
 
