@@ -60,7 +60,8 @@ extension TransitionViewController: UICollectionViewDelegate {
         if (self.animator == nil) {
             self.animator = YHFocusAnimator.init(sourceView: self.collectionView, toRect: self.view.frame, duration: 0.7)
         }
-        self.animator?.rectToFocus = cell.frame.offsetBy(dx: -collectionView.contentOffset.x, dy: -collectionView.contentOffset.y)
+        let focusRect = cell.frame.squarelized().offsetBy(dx: -collectionView.contentOffset.x, dy: -collectionView.contentOffset.y)
+        self.animator?.rectToFocus = focusRect
         let imagePage = ImageDisplayViewController.init()
         imagePage.displayImage = cell.imageView.image
         self.navigationController?.delegate = self
@@ -72,7 +73,9 @@ extension TransitionViewController: UICollectionViewDelegate {
 
 extension TransitionViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize.init(width: 60, height: 60)
+        let image = 0 == indexPath.row % 3 ? UIImage.init(named: "duck")! : UIImage.init(named: "sunset")!
+        let cellSize = CGSize.init(width: image.size.width / 10.0,height: image.size.height / 10.0)
+        return cellSize
     }
 }
 
