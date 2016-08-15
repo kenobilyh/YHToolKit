@@ -18,7 +18,7 @@ class ImageDisplayViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupView()
-        self.view.backgroundColor = UIColor.white()
+        self.view.backgroundColor = UIColor.white
     }
     
     func setupView() -> Void {

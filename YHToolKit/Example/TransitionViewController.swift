@@ -15,11 +15,11 @@ class TransitionViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.white()
+        self.view.backgroundColor = UIColor.white
         // Do any additional setup after loading the view, typically from a nib.
         let collectionViewFlowLayout = UICollectionViewFlowLayout.init()
         collectionView = UICollectionView.init(frame: self.view.bounds, collectionViewLayout: collectionViewFlowLayout)
-        collectionView?.backgroundColor = UIColor.clear()
+        collectionView?.backgroundColor = UIColor.clear
         collectionView?.translatesAutoresizingMaskIntoConstraints = false
         collectionView?.register(ImageCollectionViewCell.classForCoder(), forCellWithReuseIdentifier: NSStringFromClass(ImageCollectionViewCell.classForCoder()))
         collectionView?.delegate = self
