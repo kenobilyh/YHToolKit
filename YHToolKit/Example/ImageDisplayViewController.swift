@@ -28,12 +28,12 @@ class ImageDisplayViewController: UIViewController {
         self.view.addSubview(self.mainImageView)
         
         self.titleLabel = UILabel.init(frame: CGRect.zero)
-        self.titleLabel.font = UIFont.preferredFont(forTextStyle: UIFontTextStyleHeadline)
+        self.titleLabel.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.headline)
         self.titleLabel.text = "Sunset"
         self.view.addSubview(self.titleLabel)
         
         self.describeLabel = UILabel.init(frame: CGRect.zero)
-        self.describeLabel.font = UIFont.preferredFont(forTextStyle: UIFontTextStyleBody)
+        self.describeLabel.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)
         self.describeLabel.text = "What a beautiful sunset"
         self.view.addSubview(self.describeLabel)
         

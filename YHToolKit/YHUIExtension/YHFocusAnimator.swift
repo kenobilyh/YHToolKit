@@ -18,15 +18,17 @@ class YHFocusAnimator: NSObject, UIViewControllerAnimatedTransitioning {
     init(sourceView: UIView!, toRect: CGRect!, duration: TimeInterval?) {
         self.sourceView = sourceView
         self.toRect = toRect
+        self.duration = duration
         super.init()
     }
     
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return self.duration > 0.0 ? self.duration! : 0.7
+        guard self.duration == nil else { return self.duration! }
+        return TimeInterval(0.7)
     }
     
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
-        let toVC = transitionContext.viewController(forKey: UITransitionContextToViewControllerKey)
+        let toVC = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.to)
         if .push == self.operation {
             sourceView.focusRect(self.rectToFocus!, toRect: self.toRect, duration: self.transitionDuration(using: transitionContext), options: [], completion: { (complete) in
                 transitionContext.containerView.addSubview(toVC!.view)

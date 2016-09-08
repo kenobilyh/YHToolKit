@@ -41,7 +41,7 @@ extension FileManager {
         if (fileManager.fileExists(atPath: filePath)) {
             var fileInfo: NSDictionary
             do {
-                fileInfo = try fileManager.attributesOfItem(atPath: filePath)
+                fileInfo = try fileManager.attributesOfItem(atPath: filePath) as NSDictionary
                 fileSize = fileInfo.fileSize()
             } catch {
                 
