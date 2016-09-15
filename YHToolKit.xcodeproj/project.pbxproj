@@ -18,6 +18,7 @@
 		0070A6321D2FDCAB00865EF3 /* UIVIew+AniMarco.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0070A6311D2FDCAB00865EF3 /* UIVIew+AniMarco.swift */; };
 		0084B5E51D32371A00E80315 /* YHFocusAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0084B5E41D32371A00E80315 /* YHFocusAnimator.swift */; };
 		0084B5E71D3336DE00E80315 /* CGRect+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0084B5E61D3336DE00E80315 /* CGRect+Util.swift */; };
+		008FB2CD1D8AF278008AE835 /* UIColor+ColorSets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008FB2CC1D8AF278008AE835 /* UIColor+ColorSets.swift */; };
 		00A4CEBE1D30C9180010B4B1 /* TransitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A4CEBD1D30C9180010B4B1 /* TransitionViewController.swift */; };
 		00A4CEC01D30E78A0010B4B1 /* ImageDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A4CEBF1D30E78A0010B4B1 /* ImageDisplayViewController.swift */; };
 		00A4CECA1D3209F20010B4B1 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A4CEC91D3209F20010B4B1 /* ImageCollectionViewCell.swift */; };
@@ -58,6 +59,7 @@
 		0070A6311D2FDCAB00865EF3 /* UIVIew+AniMarco.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIVIew+AniMarco.swift"; sourceTree = "<group>"; };
 		0084B5E41D32371A00E80315 /* YHFocusAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YHFocusAnimator.swift; sourceTree = "<group>"; };
 		0084B5E61D3336DE00E80315 /* CGRect+Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGRect+Util.swift"; sourceTree = "<group>"; };
+		008FB2CC1D8AF278008AE835 /* UIColor+ColorSets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+ColorSets.swift"; sourceTree = "<group>"; };
 		00A4CEBD1D30C9180010B4B1 /* TransitionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionViewController.swift; sourceTree = "<group>"; };
 		00A4CEBF1D30E78A0010B4B1 /* ImageDisplayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDisplayViewController.swift; sourceTree = "<group>"; };
 		00A4CEC91D3209F20010B4B1 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 			children = (
 				0084B5E41D32371A00E80315 /* YHFocusAnimator.swift */,
 				0084B5E61D3336DE00E80315 /* CGRect+Util.swift */,
+				008FB2CC1D8AF278008AE835 /* UIColor+ColorSets.swift */,
 			);
 			path = YHUIExtension;
 			sourceTree = "<group>";
@@ -316,6 +319,7 @@
 				0018B7621CF965BE00DB71CD /* ViewController.swift in Sources */,
 				0070A6321D2FDCAB00865EF3 /* UIVIew+AniMarco.swift in Sources */,
 				00A4CECA1D3209F20010B4B1 /* ImageCollectionViewCell.swift in Sources */,
+				008FB2CD1D8AF278008AE835 /* UIColor+ColorSets.swift in Sources */,
 				0084B5E51D32371A00E80315 /* YHFocusAnimator.swift in Sources */,
 				00A4CEC01D30E78A0010B4B1 /* ImageDisplayViewController.swift in Sources */,
 				00A4CEBE1D30C9180010B4B1 /* TransitionViewController.swift in Sources */,
